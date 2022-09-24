@@ -8,6 +8,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     private final String[] PERMISSIONS_REQUIRED = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE};
@@ -21,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showMap() {
-        Toast.makeText(this, "Map shown!", Toast.LENGTH_SHORT).show();
+        String data = new Date().toString();
+        // put ur firebase code here to send data to firebase
+        Toast.makeText(this, data, Toast.LENGTH_LONG).show();
     }
 
     @Override
