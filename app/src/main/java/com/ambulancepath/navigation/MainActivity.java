@@ -6,6 +6,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final String[] PERMISSIONS_REQUIRED = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE};
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://navigation-dd80b-default-rtdb.asia-southeast1.firebasedatabase.app/");
-    DatabaseReference myRef = database.getReference("message");
+    DatabaseReference myRef = database.getReference("date");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,31 +32,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         checkPermissions();
+        findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String data = new Date().toString();
+                // put ur firebase code here to send data to firebase
+                // Write a message to the database
+                myRef.setValue(data);
+
+                // Read from the database
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        String value = dataSnapshot.getValue(String.class);
+                        Log.d(TAG, "Value is: " + value);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w(TAG, "Failed to read value.", error.toException());
+                    }
+                });
+            }
+        });
     }
 
     private void showMap() {
-        String data = new Date().toString();
-        // put ur firebase code here to send data to firebase
-        // Write a message to the database
-        myRef.setValue("Hello, World!");
-
-        // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d(TAG, "Value is: " + value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
-        Toast.makeText(this, data, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Map loaded!", Toast.LENGTH_LONG).show();
     }
 
     @Override
