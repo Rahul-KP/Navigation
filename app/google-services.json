@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "570942369265",
+    "project_id": "navigation-dd80b",
+    "storage_bucket": "navigation-dd80b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570942369265:android:0e05b70a9f3f4ba6c76850",
+        "android_client_info": {
+          "package_name": "com.ambulancepath.navigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "570942369265-drf8tvsh6mdbkjsguovc3ptn6kg84lr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeTZOydDI1Mh5AvZwurL_3qcywmnQ_lgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "570942369265-drf8tvsh6mdbkjsguovc3ptn6kg84lr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
