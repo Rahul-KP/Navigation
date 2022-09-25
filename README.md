@@ -1,4 +1,4 @@
-# Ambukance Path Clearance 🚑
+# Ambulance Path Clearance 🚑
 
 ##  Problem Statement
 Traffic management is something that is often overlooked. 
