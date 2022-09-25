@@ -26,4 +26,4 @@ An Application service that :
 
 ## Work Flow
 
-![App Screenshot](images/InfyInter.jpg)
+![App Screenshot](images/AmbWorkFlow.jpeg)
