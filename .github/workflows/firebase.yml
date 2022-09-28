@@ -26,3 +26,8 @@ jobs:
       env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       run: ./gradlew assembleDebug appDistributionUploadDebug
+    - name: Upload build reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-reports
+        path: build/reports/
