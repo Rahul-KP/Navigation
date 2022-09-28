@@ -21,5 +21,11 @@ public class MapActivity extends AppCompatActivity {
                 fd.sendData();
             }
         });
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_container_view, ExampleFragment.class, null)
+                    .commit();
+        }
     }
 }
