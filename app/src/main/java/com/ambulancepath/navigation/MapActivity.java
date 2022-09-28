@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -21,5 +22,11 @@ public class MapActivity extends AppCompatActivity {
                 fd.sendData();
             }
         });
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_container_view, ExampleFragment.class, null)
+                    .commit();
+        }
     }
 }
