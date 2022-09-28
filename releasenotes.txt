@@ -1,1 +1,1 @@
-Generated a sample layout with a button
+The button on the fragment displays a toast message
