@@ -1,5 +1,1 @@
-Progress thus far,
-Send button to send data to firebase -date as of now
-display buttons to choose between Ambulance driver and user
-Seek for permissions
-display basic map Layout
+The button on the fragment displays a toast message
