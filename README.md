@@ -50,7 +50,7 @@ When we open the app we get two choose a role:
 
 The ambulance needs to reach the hospital as soon as possible.  
 The ambulance is fitted with an IoT device that is connected to the internet .
-Every few seconds the signals are sent via IoT device using ESP8266 to a channel.
+Every few seconds the signals are sent via IoT device to a channel.
 Every traffic pole is subscribed to the channel. 
 The pole will have the hardcoded information of its current location 
 As the traffic pole is subscribed to the channel it will get the GPS coordinates of the ambulance , when an ambulance is in close proximity to the traffic pole.
