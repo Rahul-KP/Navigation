@@ -9,6 +9,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.slider.Slider;
+import com.mikepenz.materialdrawer.holder.StringHolder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+
 public class MainActivity extends AppCompatActivity {
 
     private final String[] PERMISSIONS_REQUIRED = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE};
@@ -18,7 +22,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkPermissions();
+        PrimaryDrawerItem primaryDrawerItem = new PrimaryDrawerItem();
+        primaryDrawerItem.setName(new StringHolder(R.string.item1));
+
+        Slider slider = (Slider) findViewById(R.id.slider);
+//        slider.
+//        checkPermissions();
     }
 
     @Override

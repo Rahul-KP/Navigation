@@ -51,4 +51,15 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // material drawer
+    implementation("com.mikepenz:materialdrawer:9.0.1")
+    //required support lib modules
+    implementation "androidx.appcompat:appcompat:1.5.1"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "androidx.annotation:annotation:1.5.0"
+    implementation "com.google.android.material:material:1.8.0-alpha01" // requires at least 1.5.0-x
+    implementation "androidx.constraintlayout:constraintlayout-core:1.0.4"
+    // Add for Android-Iconics support
+    implementation "com.mikepenz:materialdrawer-iconics:9.0.1"
 }

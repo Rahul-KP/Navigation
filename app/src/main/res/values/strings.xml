@@ -2,4 +2,5 @@
     <string name="app_name">Navigation</string>
     <string name="user_text">Regular user</string>
     <string name="driver_text">Ambulance Driver</string>
+    <string name="item1">Item 1</string>
 </resources>
