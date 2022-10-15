@@ -1,1 +1,3 @@
-The button now zooms in on the user's current location on button press.
+Added preferences. Now, the app will remember who is the user (regular user / ambulance driver) even after the app is closed (preferences).
+Button to reset the preferences added to test it out. Skip button should launch the map but since the SDK is non-functional, the button is non-functional as well.
+Quit button quits the app.
