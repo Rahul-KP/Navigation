@@ -3,4 +3,6 @@
     <string name="user_text">Regular user</string>
     <string name="driver_text">Ambulance Driver</string>
     <string name="saved_user_type">user_type</string>
+    <string name="quit">Quit</string>
+    <string name="skip">Skip</string>
 </resources>

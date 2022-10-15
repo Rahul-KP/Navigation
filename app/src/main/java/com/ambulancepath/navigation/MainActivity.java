@@ -1,10 +1,15 @@
 package com.ambulancepath.navigation;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkFirstLaunch() {
-        if(sharedPref.getString(getString(R.string.saved_user_type), "").equals("")) {
+        if (sharedPref.getString(getString(R.string.saved_user_type), "").equals("")) {
             findViewById(R.id.button_driver).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -44,6 +49,30 @@ public class MainActivity extends AppCompatActivity {
                     updatePreferences("user");
                 }
             });
+        }
+    }
+    // Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.quit:
+                System.exit(0);
+                return true;
+            case R.id.skip:
+                Toast.makeText(this, "Loading Map", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, MapActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
