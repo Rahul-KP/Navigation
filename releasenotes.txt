@@ -1,2 +1,3 @@
-The button on the fragment displays a toast message.
-Testing pipeline now
+Added preferences. Now, the app will remember who is the user (regular user / ambulance driver) even after the app is closed (preferences).
+Button to reset the preferences added to test it out. Skip button should launch the map but since the SDK is non-functional, the button is non-functional as well.
+Quit button quits the app.
