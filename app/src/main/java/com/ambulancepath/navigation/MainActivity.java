@@ -14,12 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private final String[] PERMISSIONS_REQUIRED = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE};
-    private final SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPref = MainActivity.this.getSharedPreferences("prefs", Context.MODE_PRIVATE);
         checkPermissions();
     }
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    private void checkFirstLaunch() {
+    public void checkFirstLaunch() {
         if(sharedPref.getString(getString(R.string.saved_user_type), "").equals("")) {
             findViewById(R.id.button_driver).setOnClickListener(new View.OnClickListener() {
                 @Override
