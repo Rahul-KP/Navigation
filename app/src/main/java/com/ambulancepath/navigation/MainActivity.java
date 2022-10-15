@@ -3,7 +3,6 @@ package com.ambulancepath.navigation;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.saved_user_type), usertype);
         editor.apply();
+        Toast.makeText(this, "User type is now set to " + usertype, Toast.LENGTH_LONG).show();
     }
 
     public void checkFirstLaunch() {
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+        menu.add(0, 32, 0, "Reset Preferences");
         return true;
     }
 
@@ -69,11 +70,22 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.skip:
                 Toast.makeText(this, "Loading Map", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, MapActivity.class));
+//                startActivity(new Intent(this, MapActivity.class));
+                return true;
+            case 32: // only for debugging
+                Toast.makeText(this, "Resetting Preferences", Toast.LENGTH_LONG).show();
+                resetPreferences();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    // function used only for debugging - will not make it to production
+    private void resetPreferences() {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.apply();
     }
 
     @Override
