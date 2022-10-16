@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>MyMap</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#map{
+			width:100%;
+			 height: 100vh;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="map"></div>
+	
+	<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+	<script>
+
+		var map = L.map('map').setView([12.8873909, 77.6412418], 19);
+		// mapLink = "<a href='http://openstreetmap.org'>OpenStreetMap</a>";
+		// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'Leaflet &copy; ' + mapLink + ', contribution', maxZoom: 18 }).addTo(map);
+
+        var TomTom_Basic = L.tileLayer('https://{s}.api.tomtom.com/map/1/tile/basic/{style}/{z}/{x}/{y}.{ext}?key={apikey}', {
+        maxZoom: 22,
+        attribution: '<a href="https://tomtom.com" target="_blank">&copy;  1992 - 2022 TomTom.</a> ',
+        subdomains: 'abcd',
+        style: 'main',
+        ext: 'png',
+        apikey: 'ayVXCr1yAMNNJHA6ZY6VetCY1D9e9HQG'
+        }).addTo(map);
+
+		var counter =0;
+		var StartPoint = L.icon({
+			iconUrl: 'start.png',
+			iconSize: [60, 60]
+		})
+
+
+		var AmbuIcon = L.icon({
+			iconUrl: 'Ambu.png',
+			iconSize: [50, 50]
+		})
+
+		// here
+		var Startloc = L.marker([12.8873909, 77.6412418], { icon: StartPoint, draggable: true }).addTo(map);
+		
+
+		var endPoint = L.icon({
+			iconUrl: 'endLoc.png',
+			iconSize: [70, 70]
+		})
+		
+
+		map.on('click', function (e) {
+			
+			console.log(e);
+			console.log(e.latlng.lat,+""+e.latlng.lng);
+			
+			
+			var newMarker = L.marker([e.latlng.lat, e.latlng.lng],{ icon: endPoint}).addTo(map);
+
+			
+			var Ambi = L.marker([12.8873909, 77.6412418], { icon: AmbuIcon}).addTo(map);
+
+			L.Routing.control({
+				waypoints: [
+					L.latLng(12.8873909, 77.6412418),
+					L.latLng(e.latlng.lat, e.latlng.lng)
+				]
+			}).on('routesfound', function (e) {
+				var routes = e.routes;
+				console.log(routes);
+
+				e.routes[0].coordinates.forEach(function (coord, index) {
+					setTimeout(function () {
+						Ambi.setLatLng([coord.lat, coord.lng]);
+					}, 100*index )
+				})
+
+			}).addTo(map);
+
+		});
+
+
+	</script>
+
+
+</body>
+
+</html>
