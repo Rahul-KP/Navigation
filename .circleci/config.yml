@@ -16,6 +16,7 @@ jobs:
       - checkout
       - run: sh gradlew assembleDebug
       - run: sh gradlew appDistributionUploadDebug
+      - run: sh gradlew build sonarqube 
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
