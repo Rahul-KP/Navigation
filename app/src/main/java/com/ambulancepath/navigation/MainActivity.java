@@ -3,6 +3,7 @@ package com.ambulancepath.navigation;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.skip:
                 Toast.makeText(this, "Loading Map", Toast.LENGTH_LONG).show();
-//                startActivity(new Intent(this, MapActivity.class));
+                startActivity(new Intent(this, MapActivity.class));
                 return true;
             case 32: // only for debugging
                 Toast.makeText(this, "Resetting Preferences", Toast.LENGTH_LONG).show();

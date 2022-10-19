@@ -18,18 +18,18 @@ public class MapInit extends Application {
     }
 
     private String getAtlasClientId() {
-        return "33OkryzDZsIF6Th65B3OtwQBV2cLHeHmkqmlbO7mUgIvlUbMv1EqNZOljG6FxgI9kf3ie-5913Vum_TyV_ePH1hLixZX-wGZ";
+        return "33OkryzDZsLade6RGpBoKkbC4sk4VkaOoFlxvYMpkOKLKViBnKiWq3A2xLnLBTSyjo6-49v6r4-e0a_6GZwJKg==";
     }
 
     private String getAtlasClientSecret() {
-        return "lrFxI-iSEg9iRJEYp5U1-l5oZb48qwNSbJMSaCwH3nINClkwMl0U8NX0GXiTwP_3COR-T3-HjmnRpc7VnjQWRWW4bsCsPhPbnYLUp705ZmY=";
+        return "lrFxI-iSEg8QyPb2DRSrrhWu4pM_X4pvUrf2iEW9b3wGSc-U66MfXYEDHXVMWZ7DjX0CS-0j3nAcloE-ldFBk3SEhnoGsFXo";
     }
 
     private String getMapSDKKey() {
-        return "c5723395063fc4a3ba072456fe05978c";
+        return "74220f65786b1ef375b985d857ccfeb1";
     }
 
     private String getRestAPIKey() {
-        return "c5723395063fc4a3ba072456fe05978c";
+        return "74220f65786b1ef375b985d857ccfeb1";
     }
 }
