@@ -2,14 +2,18 @@ package com.ambulancepath.navigation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.location.LocationListenerCompat;
@@ -54,23 +58,38 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapView.getMapAsync(this);
 
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
         Criteria criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
         criteria.setPowerRequirement(Criteria.POWER_LOW);
         criteria.setAltitudeRequired(false);
         criteria.setBearingRequired(false);
-        String locationProvider = locationManager.getBestProvider(criteria, true);
+        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            String locationProvider = locationManager.getBestProvider(criteria, true);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 //            not needed
-            return;
-        }
-        locationManager.requestLocationUpdates(locationProvider, 1000, 0, new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {
-                MapActivity.this.lastKnownLocation = new LatLng(location);
+                return;
             }
-        });
+            locationManager.requestLocationUpdates(locationProvider, 1000, 0, new LocationListener() {
+                @Override
+                public void onLocationChanged(@NonNull Location location) {
+                    MapActivity.this.lastKnownLocation = new LatLng(location);
+                }
+            });
+        }
+        else {
+            new AlertDialog.Builder(this)
+                    .setMessage("Location not enabled, Please turn on!!!")
+                    .setPositiveButton("Enable location", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    })
+                    .setNegativeButton("Cancel",null)
+                    .show();
+        }
     }
 
     public void requestCamLocChange() {
