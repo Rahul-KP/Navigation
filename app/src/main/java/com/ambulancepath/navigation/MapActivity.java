@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.location.LocationListenerCompat;
 
 import com.mappls.sdk.maps.MapView;
 import com.mappls.sdk.maps.MapplsMap;
@@ -21,7 +22,7 @@ import com.mappls.sdk.maps.camera.CameraUpdateFactory;
 import com.mappls.sdk.maps.geometry.LatLng;
 import com.mappls.sdk.maps.location.LocationComponentActivationOptions;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListenerCompat {
 
     private FirebaseData fd;
     private MapplsMap mapplsMap;
